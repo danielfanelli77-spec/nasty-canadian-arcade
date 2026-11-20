@@ -443,7 +443,7 @@
       <div class="stat-pill">SCORE <strong id="hudScore">0</strong></div>
       <div class="stat-pill">STREAK <strong id="hudStreak">0x</strong></div>
       <div class="stat-pill">SHOTS <span class="ammo-bar" id="hudAmmo"></span></div>
-      <div class="stat-pill prize">FREE TEE <strong id="hudTarget">50,000</strong></div>
+      <div class="stat-pill prize">FREE TEE <strong id="hudTarget">BEAT LVL 5</strong></div>
     </div>
     <div class="hud-controls">
       <button type="button" class="btn-sm" id="restartTopBtn">Restart</button>
@@ -467,7 +467,7 @@
         </ul>
 
         <div class="prize-banner" id="prizeBanner">
-          <strong>FREE T-SHIRT CHALLENGE:</strong> Score <strong>50,000+ pts</strong>, screen-record your win, and tag <strong>@officialnastycanadian</strong> on TikTok.
+          <strong>FREE T-SHIRT CHALLENGE:</strong> Defeat <strong>all 5 levels</strong> (including the Level 5 Sudden Death Boss), screen-record your victory screen, and tag <strong>@officialnastycanadian</strong> on TikTok.
         </div>
 
         <div class="score-summary hidden" id="scoreSummary">
@@ -850,21 +850,16 @@
     finalHitsEl.textContent = String(hits);
 
     const lvl = LEVELS[levelIdx] || LEVELS[0];
-    if (won && score >= PRIZE_SCORE) {
-      modalBadge.textContent = 'IMPOSSIBLE ACHIEVED · ALL 5 LEVELS';
-      modalTitle.textContent = 'You Hit 50,000+ Points!';
-      modalDesc.textContent = 'Screen-record or screenshot this victory and tag @officialnastycanadian on TikTok to claim your free tee.';
-      prizeBanner.innerHTML = '<strong>CLAIM CODE:</strong> <code>NORTHSTRONG-50K</code> · Tag us on TikTok!';
-    } else if (won) {
-      modalBadge.textContent = 'ALL 5 LEVELS CLEARED';
-      modalTitle.textContent = 'Legend! ' + score.toLocaleString() + ' pts';
-      modalDesc.textContent = 'You beat the Rockies Boss! Chain longer streaks without hitting friendlies to break 50,000 pts for the free tee.';
-      prizeBanner.innerHTML = '<strong>TIP:</strong> Avoid friendly penalties (-1,500) and nail VIP Santa Geese.';
+    if (won) {
+      modalBadge.textContent = 'CHAMPION · ALL 5 LEVELS DEFEATED!';
+      modalTitle.textContent = 'YOU BEAT THE ENTIRE GAME!';
+      modalDesc.textContent = 'You survived Sudden Death and defeated the Rockies Boss! Screen-record or screenshot this screen and tag @officialnastycanadian on TikTok to claim your free tee.';
+      prizeBanner.innerHTML = '<strong>WINNER CLAIM CODE:</strong> <code>NORTHSTRONG-WIN</code> · Final Score: ' + score.toLocaleString() + ' pts!';
     } else {
       modalBadge.textContent = 'STOPPED AT LEVEL ' + lvl.num + ' · ' + lvl.name.toUpperCase();
       modalTitle.textContent = reason || 'The Geese Got Away!';
-      modalDesc.textContent = 'Run it back to climb all 5 Canadian landmarks—or head straight to nasty-canadian.com.';
-      prizeBanner.innerHTML = '<strong>FREE T-SHIRT TARGET:</strong> 50,000 pts · Share your highest run on TikTok!';
+      modalDesc.textContent = 'You need to defeat all 5 levels (including the Level 5 Boss) to win the free tee—run it back or head straight to nasty-canadian.com.';
+      prizeBanner.innerHTML = '<strong>FREE T-SHIRT RULE:</strong> Beat All 5 Levels · Share your best run on TikTok!';
     }
     startBtn.textContent = 'PLAY AGAIN';
   }
